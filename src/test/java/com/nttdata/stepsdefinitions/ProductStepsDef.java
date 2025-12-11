@@ -17,20 +17,19 @@ public class ProductStepsDef {
     @Dado("estoy en la página de la tienda")
     public void estoy_en_la_pagina_de_la_tienda() {
         driver = getDriver();
-        driver.get("https://qalab.bensg.com/store");
+        driver.get("https://qalab.bensg.com/store/pe/iniciar-sesion");
         productSteps = new ProductSteps(driver);
         screenShot();
     }
 
     @Y("me logueo con mi usuario {string} y clave {string}")
-    public void me_logueo_con_mi_usuario_y_clave(String user, String pass) {
-        // Hacer click a iniciar sesión
-        productSteps.goToLogin();
+    public void me_logueo_con_mi_usuario_y_clave(String user, String password) {
 
-        LoginSteps login = new LoginSteps(driver);
-        login.typeUser(user);
-        login.typePassword(pass);
-        login.login();
+        LoginSteps loginSteps = new LoginSteps(driver);
+
+        loginSteps.typeUser(user);
+        loginSteps.typePassword(password);
+        loginSteps.login();
         screenShot();
     }
 
